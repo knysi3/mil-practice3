@@ -1,48 +1,227 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>myMemoPad</title>
-<script src="js/jquery-2.1.3.min.js"></script>
-<link rel="stylesheet" href="css/sample.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 5 Simple Admin Dashboard</title>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sample1.css" />
 </head>
-<body>
-<header>
-<h1>MemoPad</h1>
-</header>
-<main>
-    <input type="text">
-    <textarea></textarea>
-    <ul>
-        <li>Save</li>
-        <li>Clear</li>
-    </ul>
-</main>
-<table id="list">
-<!-- ここに追加データが挿入される -->
-</table>
-<script>
+<body style="background: linear-gradient(180deg, #222222, #222222);">
+    <nav class="navbar navbar-light bg-light p-3" style="background: linear-gradient(180deg, #603BFF, #603BFF);">
+        <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+            <a class="navbar-brand" href="#" style="color:white">おれのメモ帳</a>
+            <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-12 col-md-4 col-lg-2">
+            <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+            <div class="mr-3 mt-1">
+                <a href="https://www.nintendo.co.jp/switch/av5ja/index.html" style="color: #6AF7CE">Let's go</a>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  ログイン
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="#">設定</a></li>
+                  <li><a class="dropdown-item" href="#">メッセージ</a></li>
+                  <li><a class="dropdown-item" href="#">サインアウト</a></li>
+                </ul>
+              </div>
+        </div>
+      </nav>
 
-//1.Save クリックイベント
+      <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="background: linear-gradient(180deg, #E9FF3D, #E9FF3D);">
+                <div class="position-sticky pt-md-5">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span class="ml-2">メモ帳</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                            <span class="ml-2">翻訳</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            <span class="ml-2">情報売買</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span class="ml-2">シェア</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            <span class="ml-2">使用レポート</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                            <span class="ml-2">How To?</span>
+                          </a>
+                        </li>
+                      </ul>
+                  </div>
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="#">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">メモ帳</li>
+                    </ol>
+                </nav>
+                <p  style="color:white">作成ボタンをクリックするとカードを登録できるよ</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mr-3" data-bs-toggle="modal" data-bs-target="#regModal" style="background-color: #603BFF; border-color: #603BFF;" >登録</button>
+                <button type="button" class="btn btn-primary" id="clear" style="background-color: #603BFF; border-color: #603BFF;">塗りなおす</button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="regModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="memoTitle" class="form-label">タイトル  <span class="badge bg-danger">必須</span></label>
+                            <input type="text" class="form-control" id="memoTitle" placeholder="タイトルを記入">
+                            <span class="invalid-feedback">必須入力です.</span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="memoText" class="form-label">メモ  <span class="badge bg-danger">必須</span></label>
+                          <textarea class="form-control" id="memoText" rows="3"></textarea>
+                          <span class="invalid-feedback">必須入力です.</span>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" style="background-color: #603BFF; border-color: #603BFF;" id="save">登録</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  
+                  
+                  <div class="container">
+                  <div class="row my-4" id="list">
+                    <!-- ここにカードが追加される -->
+                  </div>
+                  </div>
+            </main>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        function returnDatatime() {
+            var date = new Date();
+            var datetime = date.getFullYear() + '/'
+                           + ('0' + (date.getMonth() + 1)).slice(-2) + '/'
+                           + ('0' + date.getDate()).slice(-2) + ' '
+                           + ('0' + date.getHours()).slice(-2) + ':'
+                           + ('0' + date.getMinutes()).slice(-2) + ':'
+                           + ('0' + date.getSeconds()).slice(-2);
+            return datetime;
+        }
+
+
+
+        // Save クリックイベント
+        $("#save").on("click",function(){
+            const memoTitle = $("#memoTitle").val();
+            const memoText = $("#memoText").val();
+            const datetime = returnDatatime();
+            const text = {
+                memoText: memoText,
+                datetime: datetime,
+            }
+            const textJson = JSON.stringify(text);
+            localStorage.setItem(memoTitle, textJson);
+            const html = '<div class="col-3 my-2" style="color:white">'
+                         + '<div class="card">'
+                         + '<h5 class="card-header">'+memoTitle+'</h5>'
+                         + '<div class="card-body">'
+                         + '<p class="card-text">'+memoText+'</p>'
+                         + '<p class="card-text text-info small" style="color: #6AF7CE">'+datetime+'</p>'
+                         + '<button type="button" class="btn btn-primary" style="background-color: #603BFF; border-color: #603BFF;" id="delete'+memoTitle+'">削除</button>'
+                         + '</div>'
+                         + '</div>'
+                         + '</div>';
+            $('#regModal').modal('hide');
+            $("#list").append(html);
+            window.location.reload();   // 再読み込みしないと削除ボタンが実行できない、なぜ？再読みしないと生成した要素を認知してくれないから？
+        });
+
+        // clear クリックイベント
+        $("#clear").on("click",function(){
+            localStorage.clear();
+            $("#list").empty();
+        });
+
+        // ページ読み込み：保存データ取得表示
+        for(let i=0; i<localStorage.length; i++){
+            const memoTitle = localStorage.key(i);
+            const textJson = JSON.parse(localStorage.getItem(memoTitle));
+            const html = '<div class="col-3 my-2" style="color:white">'
+                         + '<div class="card">'
+                         + '<h5 class="card-header" style="background: linear-gradient(180deg, #333333, #333333);">'+memoTitle+'</h5>'
+                         + '<div class="card-body" style="background: linear-gradient(180deg, #3C3C3C, #3C3C3C);">'
+                         + '<p class="card-text">'+textJson.memoText+'</p>'
+                         + '<p class="card-text small" style="color: #6AF7CE">'+textJson.datetime+'</p>'
+                         + '<button type="button" class="btn btn-primary btn-ika" style="background-color: #603BFF; border-color: #603BFF;" id="delete'+memoTitle+'">削除</button>'
+                         + '</div>'
+                         + '</div>'
+                         + '</div>';
+            $("#list").append(html);
+        }
+
+        // delete 削除イベント
+        $(".btn.btn-primary").on("click",function(){
+          var key = $(this).attr('id');
+          if (key.match(/delete/)) {
+              key = key.replace("delete", "");
+              console.log(key);
+              localStorage.removeItem(key);
+              window.location.reload(); 
+          }
+        });
+
+
+
+        // // 書き換えたい、Vueつかえばもっとシンプルにかけそう
+        // var app = new Vue({
+        //     el: '#vue_unit',
+        //     data: {
+        //         message: '書き換えました、ここでいろいろできます'
+        //     }
+        // })
 
 
 
 
-
-
-//2.clear クリックイベント
-
-
-
-
-
-//3.ページ読み込み：保存データ取得表示
-
-
-
-
-
-</script>
-<footer><small>G's</small></footer>
+    </script>
 </body>
 </html>
